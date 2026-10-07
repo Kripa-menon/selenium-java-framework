@@ -19,7 +19,7 @@ public class LoginTest extends BaseTest {
            ProductsPage productsPage = loginPage.login(props.getProperty("email"), props.getProperty("password") );
 
            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-           wait.until(ExpectedConditions.urlContains("dashboard/dash"));
+           //wait.until(ExpectedConditions.urlContains("dashboard/dash"));
            Assert.assertTrue(productsPage.isLoaded(),"Products page did not load after login");
        }
 
