@@ -1,12 +1,10 @@
 package base;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -16,7 +14,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() throws IOException {
         props.load(new FileInputStream("src/test/resources/config.properties"));
-        driver = new ChromeDriver();
+        driver = DriverFactory.createDriver(props.getProperty("browser"));
         driver.manage().window().maximize();
         driver.get(props.getProperty("baseUrl"));
 
