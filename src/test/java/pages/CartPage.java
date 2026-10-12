@@ -16,6 +16,8 @@ public class CartPage {
 
     private final By cartItemNames = By.cssSelector("li.items h3");
 
+    private final By checkoutButton = By.xpath("//li[@class='totalRow']/button");
+
     public CartPage(WebDriver driver){
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -30,5 +32,9 @@ public class CartPage {
             }
         }
         return false;
+    }
+    public CheckoutPage gotoCheckout(){
+        wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
+        return  new CheckoutPage(driver);
     }
 }
