@@ -1,9 +1,6 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -40,6 +37,9 @@ public class CheckoutPage {
     }
 
     public  ConfirmationPage placeOrder(){
+        WebElement button = wait.until(ExpectedConditions.visibilityOfElementLocated(placeOrderButton));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView({block:'center'});",button);
+
         wait.ignoring(ElementClickInterceptedException.class).until(d->{
             d.findElement(placeOrderButton).click();
             return true;

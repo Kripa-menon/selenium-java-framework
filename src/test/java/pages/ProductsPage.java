@@ -46,7 +46,7 @@ public class ProductsPage {
     }
 
     public CartPage goToCart(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(spinner));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(spinner));
         wait.ignoring(ElementClickInterceptedException.class).until(d ->{
             d.findElement(cartButton).click();
             return  true;
