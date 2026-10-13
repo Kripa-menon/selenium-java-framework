@@ -3,11 +3,13 @@ package base;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+@Listeners(listeners.TestListener.class)
 public class BaseTest {
     protected WebDriver driver;
     protected Properties props = new Properties();
@@ -26,6 +28,10 @@ public class BaseTest {
             driver.quit();
         }
 
+    }
+
+    public WebDriver getDriver(){
+        return driver;
     }
 
 }
