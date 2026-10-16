@@ -15,10 +15,10 @@ public class LoginTest extends BaseTest {
        @Test
      public void validLoginShowsDashboard(){
 
-           LoginPage loginPage = new LoginPage(driver);
-           ProductsPage productsPage = loginPage.login(props.getProperty("email"), props.getProperty("password") );
+           LoginPage loginPage = new LoginPage(getDriver());
+           ProductsPage productsPage = loginPage.login(getEmail(), getPassword() );
 
-           WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+           WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(10));
            //wait.until(ExpectedConditions.urlContains("dashboard/dash"));
            Assert.assertTrue(productsPage.isLoaded(),"Products page did not load after login");
           //Assert.fail("Forced failure to check test report");

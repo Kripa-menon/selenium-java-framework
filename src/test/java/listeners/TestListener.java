@@ -17,23 +17,26 @@ import org.testng.ITestListener;
 public class TestListener implements ITestListener {
 
     private final ExtentReports extent = ExtentManager.getInstance();
-    private ExtentTest test;
+    //private ExtentTest test;
+    private static final ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
     @Override
     public void onTestStart(ITestResult result){
-        test = extent.createTest(result.getMethod().getMethodName());
+
+        test.set(extent.createTest(result.getMethod().getMethodName()));
     }
 
     @Override
     public void onTestSuccess(ITestResult result){
-        test.pass("Test passed");
+
+        test.get().pass("Test passed");
     }
 
 
     @Override
     public void onTestFailure(ITestResult result){
 
-        test.fail(result.getThrowable());
+        test.get().fail(result.getThrowable());
         Object testInstance = result.getInstance();
         if(testInstance instanceof BaseTest baseTest && baseTest.getDriver()!=null){
             try{
@@ -41,7 +44,7 @@ public class TestListener implements ITestListener {
                 System.out.println("Screenshot saved "+ path);
 
                 String relative = Paths.get("target").relativize(Paths.get(path)).toString().replace("\\","/");
-                test.addScreenCaptureFromPath(relative);
+                test.get().addScreenCaptureFromPath(relative);
             }catch (IOException e){
                 System.out.println("could not save screenshot "+e.getMessage());
             }
@@ -50,7 +53,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSkipped(ITestResult result){
-        test.skip("Test skipped");
+        test.get().skip("Test skipped");
 
     }
 

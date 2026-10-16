@@ -28,7 +28,7 @@ public class CheckoutTest extends BaseTest {
         String productName =data.get("productName");
         String country = data.get("country");
 
-        ProductsPage productsPage = new LoginPage(driver).login(props.getProperty("email"),props.getProperty("password"));
+        ProductsPage productsPage = new LoginPage(getDriver()).login(getEmail(),getPassword());
         Assert.assertTrue(productsPage.isLoaded(),"Products page did not load");
 
         productsPage.addToCart(productName);

@@ -13,7 +13,7 @@ public class CartTest extends BaseTest {
     public void addedProductAppearsInCart(){
         String productName = "ADIDAS ORIGINAL";
 
-        ProductsPage productsPage = new LoginPage(driver).login(props.getProperty("email"),props.getProperty("password") );
+        ProductsPage productsPage = new LoginPage(getDriver()).login(getEmail(),getPassword());
         Assert.assertTrue(productsPage.isLoaded(),"Product page did not load");
 
         productsPage.addToCart(productName);
