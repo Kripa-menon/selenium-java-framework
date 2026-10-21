@@ -37,9 +37,13 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() throws IOException {
         props.load(new FileInputStream("src/test/resources/config.properties"));
-        WebDriver driver = DriverFactory.createDriver(props.getProperty("browser"));
+        boolean headless = Boolean.parseBoolean(props.getProperty("headless","false"));
+        String gridUrl = props.getProperty("gridUrl","");
+        WebDriver driver = DriverFactory.createDriver(props.getProperty("browser"),headless,gridUrl);
         driverThread.set(driver);
-        driver.manage().window().maximize();
+        if(!headless) {
+            driver.manage().window().maximize();
+        }
         driver.get(props.getProperty("baseUrl"));
 
     }
