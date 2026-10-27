@@ -21,7 +21,7 @@ public class LoginTest extends BaseTest {
            WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(10));
            //wait.until(ExpectedConditions.urlContains("dashboard/dash"));
            Assert.assertTrue(productsPage.isLoaded(),"Products page did not load after login");
-          //Assert.fail("Forced failure to check test report");
+          //Assert.fail("retry test");
        }
 
 }
