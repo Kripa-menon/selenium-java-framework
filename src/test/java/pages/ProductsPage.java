@@ -40,7 +40,7 @@ public class ProductsPage {
             if(title.equalsIgnoreCase(name)){
                 card.findElement(addToCartButton).click();
                 wait.until(ExpectedConditions.visibilityOfElementLocated(toast));
-                TestListener.step("Product Name " + productName);
+                TestListener.step("Product Name " + title);
                 return;
             }
         }
