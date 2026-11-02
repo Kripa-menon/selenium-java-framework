@@ -57,6 +57,13 @@ public class TestListener implements ITestListener {
 
     }
 
+    public static void step(String message) {
+        ExtentTest t = test.get();   // your ThreadLocal field
+        if (t != null) {
+            t.info(message);
+        }
+    }
+
     @Override
     public void onFinish(ITestContext context){
         extent.flush();

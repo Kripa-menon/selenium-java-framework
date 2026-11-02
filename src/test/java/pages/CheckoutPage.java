@@ -1,5 +1,6 @@
 package pages;
 
+import listeners.TestListener;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,7 +34,9 @@ public class CheckoutPage {
                 return;
             }
         }
+        TestListener.step("Country: " + countryOption);
         throw new NoSuchElementException("Country not found in the dropdown" + countryName);
+
     }
 
     public  ConfirmationPage placeOrder(){

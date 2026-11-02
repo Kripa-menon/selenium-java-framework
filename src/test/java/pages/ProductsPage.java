@@ -1,5 +1,6 @@
 package pages;
 
+import listeners.TestListener;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
@@ -39,6 +40,7 @@ public class ProductsPage {
             if(title.equalsIgnoreCase(name)){
                 card.findElement(addToCartButton).click();
                 wait.until(ExpectedConditions.visibilityOfElementLocated(toast));
+                TestListener.step("Product Name " + productName);
                 return;
             }
         }

@@ -1,5 +1,6 @@
 package pages;
 
+import listeners.TestListener;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,6 +34,7 @@ public class ConfirmationPage {
                 return text.replace("|","").trim();
             }
         }
+        TestListener.step("Order ID: " + orderIDLabel);
         throw new NoSuchElementException("order Id label not found on confirmation page");
 
     }

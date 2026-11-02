@@ -1,5 +1,6 @@
 package pages;
 
+import listeners.TestListener;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,9 @@ public class LoginPage {
         driver.findElement(emailField).sendKeys(email);
         driver.findElement(passwordField).sendKeys(password);
         driver.findElement(loginButton).click();
+        TestListener.step("Logging in as: " + email);
         return new ProductsPage(driver);
+
+
     }
 }

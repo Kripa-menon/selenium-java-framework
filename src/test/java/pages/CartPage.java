@@ -1,5 +1,6 @@
 package pages;
 
+import listeners.TestListener;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,6 +32,7 @@ public class CartPage {
                 return  true;
             }
         }
+        TestListener.step("Logging in as: " + cartItemNames);
         return false;
     }
     public CheckoutPage gotoCheckout(){
