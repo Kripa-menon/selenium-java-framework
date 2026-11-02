@@ -54,3 +54,9 @@ docker-compose.yml Selenium Grid (hub + Chrome and Firefox nodes)
 - **One account per thread:** parallel tests log in with different accounts so they don't interfere.
 - **Layered config:** defaults, then local file, then environment variables, so secrets stay out of Git and CI can override anything.
 - **Listeners:** reporting, screenshots on failure and retries are kept out of the tests.
+
+## Limitations
+- **Firefox:** Verified in CI (GitHub Actions) only. It was not run locally because the geckodriver download was blocked on my machine.
+- **Selenium Grid:** `docker-compose.yml` and the `RemoteWebDriver` path in `DriverFactory` are written but have not been run, because Docker is not installed on my laptop.
+- **Verified:** Chrome locally (headed, headless, parallel) and in CI; Firefox in CI.
+- **Next steps:** Run the Grid once Docker is available, and confirm the tests pass through it.
