@@ -57,6 +57,6 @@ docker-compose.yml Selenium Grid (hub + Chrome and Firefox nodes)
 
 ## Limitations
 - **Firefox:** Verified in CI (GitHub Actions) only. It was not run locally because the geckodriver download was blocked on my machine.
-- **Selenium Grid:** `docker-compose.yml` and the `RemoteWebDriver` path in `DriverFactory` are written but have not been run, because Docker is not installed on my laptop.
+- **Selenium Grid:** `docker-compose.yml` and the `RemoteWebDriver` path in `DriverFactory` are written but have not been run, Docker needs virtualization, which isn’t available on my laptop, so the Grid setup is unverified.
 - **Verified:** Chrome locally (headed, headless, parallel) and in CI; Firefox in CI.
 - **Next steps:** Run the Grid once Docker is available, and confirm the tests pass through it.
